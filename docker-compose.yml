@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # Next.js application
+  nextjs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - sqlite-data:/app/data
+    environment:
+      - NODE_ENV=development
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=/app/data/sqlite.db
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=your_nextauth_secret
+    depends_on:
+      - redis
+    networks:
+      - app-network
+    restart: always
+
+  # Redis service
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - app-network
+      
+  # Initializer service that runs once after the app is up
+  initial-cargo-of-pokemons:
+    build:
+      context: .
+      dockerfile: Dockerfile.initial-cargo-of-pokemons
+    depends_on:
+      - nextjs-app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+  sqlite-data:

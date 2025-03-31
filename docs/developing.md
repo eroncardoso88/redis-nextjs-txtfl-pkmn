@@ -1,98 +1,93 @@
 # Developing
 
-    The development branch is canary.
+The development branch is canary. All pull requests should be opened against canary. The changes on the canary branch are published regularly.
 
-    All pull requests should be opened against canary.
+## Dependencies
 
-    The changes on the canary branch are published regularly.
+- Install Docker
+- Install Docker Compose (or use Docker Desktop which includes Docker Compose)
+- Install Git
+- Install Node.js (>= 18.17.1)
 
-### Dependencies
-
-    Install Docker.
-
-    Install Docker Compose.
-
-    Install Git.
-
-    Install Node.js (>= 18.17.1) via nvm:
-    
-    nvm install 18.17.1
-    nvm use 18.17.1
-
-### Enable pnpm:
-
-    corepack enable pnpm
-
-    Install Redis and SQLite via Docker.
-
-# Local Development
+## Local Development Setup
 
 ### Clone the repository:
-    git clone <repository-url> --branch canary --single-branch
-    cd <repository-name>
-    
+
+```
+git clone <repository-url> --branch canary --single-branch
+cd <repository-name>
+```
+
+
+### Running with Docker (recommended):
+#### Make sure your scripts are executable (Mac/Linux):
+
+```
+chmod +x scripts/dev.sh
+chmod +x scripts/initial-cargo-of-pokemons.sh
+```
+
+#### Start the development environment:
+
+```
+npm run docker:dev
+```
+This will:
+
+Start the Next.js application
+Start Redis
+Start Redis Commander (a Redis admin interface)
+Run the database migrations automatically
+
+#### Initialize Pokemon Data:
+
+```
+npm run docker:init
+# or
+./scripts/dev.sh init
+```
+
+#### Start a fresh environment (remove all data and start from scratch):
+```
+npm run docker:fresh_dev
+# or
+./scripts/dev.sh start_fresh
+```
+
+This will:
+
+Stop all containers
+Remove all volumes (Redis data, SQLite database, and node_modules)
+Start the containers again
+Run database migrations
+Initialize Pokemon data
+
+#### Stop the development environment:
+
+```
+npm run docker:stop
+# or
+./scripts/dev.sh stop
+```
+
+#### Access Points
+
+Next.js App: http://localhost:3000
+Redis Commander: http://localhost:8081
+
 ### Create a new branch:
 
-    git checkout -b MY_BRANCH_NAME origin/canary
-
-### Install dependencies:
-
-    pnpm install
-
-### Start the development server:
-
-    pnpm dev
-
-Run type checking:
-
-    pnpm types
-
-### When changes are complete, commit them:
-
-    git add .
-    git commit -m "DESCRIBE_YOUR_CHANGES_HERE"
-
-# Running the Application with Docker
-
-## Start the services using Docker Compose:
-
-    docker-compose up -d
-
-## To stop the services:
-
-    docker-compose down
-    
 ```
-version: '3.8'
+git checkout -b MY_BRANCH_NAME origin/canary
+```
 
-services:
-  app:
-    build: .
-    container_name: nextjs_redis-nextjs-txtfl-pkmn
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
-    depends_on:
-      - redis
-      - sqlite
-    environment:
-      NODE_ENV: development
+### Environment variables:
 
-  redis:
-    image: redis:latest
-    container_name: redis_redis-nextjs-txtfl-pkmn
-    ports:
-      - "6379:6379"
+Use this as a start point:
 
-  sqlite:
-    image: nouchka/sqlite3:latest
-    container_name: my_sqlite
-    volumes:
-      - sqlite_data:/root/db
-
-volumes:
-  sqlite_data:
-
-``` 
+```
+REDIS_URL=redis://redis:6379
+DATABASE_URL=/app/data/sqlite.db
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=dev-secret-key-change-me
+```

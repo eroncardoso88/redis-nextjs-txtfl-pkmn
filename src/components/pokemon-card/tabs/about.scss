@@ -1,0 +1,64 @@
+.about-tab {
+  .description {
+    margin-bottom: 1rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  .stats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+  }
+
+  .stat-label {
+    font-weight: 500;
+    color: #666;
+  }
+
+  .stat-value, .stat-alt-value {
+    color: #333;
+  }
+
+  .type-icons {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .type-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    
+    &.fire {
+      background-color: #ff9d55;
+    }
+    
+    &.water {
+      background-color: #5090f0;
+    }
+    
+    &.grass {
+      background-color: #63bb5b;
+    }
+    
+    &.electric {
+      background-color: #f7cf30;
+    }
+    
+    &.ground {
+      background-color: #d97746;
+    }
+    
+    &.rock {
+      background-color: #c5b78c;
+    }
+  }
+}

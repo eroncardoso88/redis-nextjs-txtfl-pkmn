@@ -1,0 +1,120 @@
+$primary-color: #ff5a5f;
+$warning-color: #ffe082;
+$warning-border: #ffca28;
+$warning-text: #795548;
+$code-bg: #263238;
+$code-text: #f5f5f5;
+$white-color: #f6f6f6;
+$transition-time: 0.3s;
+
+.pokemon-check {
+  &__wrapper {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 50;
+    width: 100%;
+    max-width: 24rem;
+    animation: slide-in 0.3s ease-out;
+  }
+  
+  &__container {
+    background-color: $white-color;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    border-left: 4px solid $primary-color;
+    overflow: hidden;
+  }
+  
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: $primary-color;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    &::before {
+      content: "⚠️";
+      font-size: 1.2rem;
+    }
+  }
+  
+  &__text {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    color: $warning-text;
+    
+    &--small {
+      font-size: 0.875rem;
+      opacity: 0.8;
+    }
+  }
+  
+  &__code-block {
+    background-color: $code-bg;
+    color: $code-text;
+    font-family: 'Courier New', monospace;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+    white-space: pre;
+    font-size: 0.875rem;
+  }
+  
+  &__sync-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: transform $transition-time ease, box-shadow $transition-time ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+  
+  &__sync-icon {
+    width: 1rem;
+    height: 1rem;
+    
+    &--spinning {
+      animation: spin 1.5s linear infinite;
+    }
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

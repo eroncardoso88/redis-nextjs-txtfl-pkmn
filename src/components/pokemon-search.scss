@@ -1,0 +1,135 @@
+$primary-color: #ff5a5f;
+$white-color: #f6f6f6;
+$offwhite-bg: #f9f0d8;
+$black-color: #141414;
+$gray-color: #a4acaf;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$border-radius: 2rem;
+$transition-time: 0.3s;
+
+.pokemon-search {
+  &__container {
+    position: relative;
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+  
+  &__wrapper {
+    width: 100%;
+    position: relative;
+  }
+  
+  &__input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  &__icon {
+    position: absolute;
+    left: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: $gray-color;
+  }
+  
+  &__input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid $offwhite-bg;
+    color: #141414;
+    border-radius: $border-radius;
+    background: $white-color;
+    font-size: 1rem;
+    transition: all $transition-time ease;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 4px 12px $shadow-color;
+    }
+    
+    &::placeholder {
+      color: $gray-color;
+    }
+  }
+  
+  &__spinner {
+    position: absolute;
+    right: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid rgba($primary-color, 0.2);
+    border-top-color: $primary-color;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  &__menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    overflow-y: auto;
+    border-radius: 1rem;
+    background: $white-color;
+    box-shadow: 0 4px 12px $shadow-color;
+    z-index: 10;
+    opacity: 0;
+    transition: max-height $transition-time ease, opacity $transition-time ease;
+    
+    &--open {
+      max-height: 20rem;
+      opacity: 1;
+    }
+  }
+  
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    
+    &:not(:last-child) {
+      border-bottom: 1px solid $offwhite-bg;
+    }
+    
+    &--highlighted {
+      background-color: rgba($primary-color, 0.05);
+    }
+    
+    &:hover {
+      background-color: rgba($primary-color, 0.05);
+    }
+  }
+  
+  &__item-id {
+    color: $gray-color;
+    font-weight: 500;
+    margin-right: 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  &__item-name {
+    color: $black-color;
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+  
+  &__no-results {
+    padding: 1rem;
+    text-align: center;
+    color: $gray-color;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
