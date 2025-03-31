@@ -9,6 +9,12 @@ You know we all love pokemons so that's our experience for registering what Pok√
 After you sign in you'll be able to view a list of Pok√©mons where you can add your records of your wins and losses.
 You will be able to see your records and have a custom search/autocomplete Pokemons experience.
 
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image.png)
+
 ## Project Structure
 
 ![structure](./docs/image-1.png)
