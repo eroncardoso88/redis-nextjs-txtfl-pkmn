@@ -43,3 +43,12 @@ next-env.d.ts
 
 *lock.json
 *lock.yaml
+
+# SQLite database
+data/
+*.db
+*.db-journal
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,93 @@
+$white-color: #f6f6f6;
+$black-color: #141414;
+$offwhite-bg: #f9f0d8;
+$transition-time: 0.3s;
+.poketabstrigger {
+  &__wrapper {
+    background-color: $white-color;
+    padding: 0.25rem;
+    border-radius: 2rem;
+    margin: 1rem auto 0;
+    max-width: calc(100% - 6rem);
+    mix-blend-mode: multiply;
+  }
+
+  &__container {
+    // background: linear-gradient(
+    //   360deg,
+    //   var(--poke-primary-base) 0%,
+    //   var(--poke-primary-base) 25%,
+    //   var(--poke-primary-invisible) 85%
+    // );
+    background: $offwhite-bg;
+    color: $white-color;
+    font-weight: 500;
+    letter-spacing: 0.1ch;
+    border-radius: 1.75rem;
+    width: auto;
+    // padding: 0 1rem;
+    line-height: 2rem;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+  }
+  &__trigger {
+    padding: 0 1rem;
+    font-weight: 600;
+    flex-grow: 1;
+    display: flex;
+    line-height: 2rem;
+
+    background: linear-gradient(
+      360deg,
+      $offwhite-bg 0%,
+      $offwhite-bg 25%,
+      $white-color 100%
+    );
+    transition: background $transition-time ease;
+
+    &:nth-of-type(1) {
+      border-top-left-radius: 1.75rem;
+      border-bottom-left-radius: 1.75rem;
+    }
+    &:nth-last-of-type(1) {
+      border-top-right-radius: 1.75rem;
+      border-bottom-right-radius: 1.75rem;
+    }
+
+    button {
+      background: transparent;
+      border: 0px solid white;
+      cursor: pointer;
+      color: $black-color;
+      line-height: 2rem;
+      font-weight: 700;
+      flex-grow: 1;
+      transition: color $transition-time ease;
+    }
+
+    &:hover {
+      transition: color $transition-time ease;
+      transition: background $transition-time ease;
+
+      background: linear-gradient(
+        360deg,
+        var(--poke-primary-base) 0%,
+        $offwhite-bg 25%,
+        $white-color 100%,
+      );
+    }
+
+    &--active, &--active:hover {
+      background: linear-gradient(
+        360deg,
+        var(--poke-primary-base) 0%,
+        var(--poke-primary-base) 25%,
+        $white-color 100%
+      );
+      button {
+        color: $white-color;
+      }
+    }
+  }
+}

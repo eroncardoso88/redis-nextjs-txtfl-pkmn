@@ -1,0 +1,63 @@
+.status-tab {
+  .stat-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: 3rem 1fr 2rem;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .stat-label {
+    font-weight: 500;
+    color: #666;
+  }
+
+  .stat-bar-container {
+    background-color: #e8e8e8;
+    height: 0.75rem;
+    border-radius: 0.375rem;
+    overflow: hidden;
+  }
+
+  .stat-bar {
+    height: 100%;
+    border-radius: 0.375rem;
+    
+
+    //!TODO: cherck this later, might be a lot different
+    &.hp-bar {
+      background-color: #ff5959;
+    }
+    
+    &.atk-bar {
+      background-color: #f5ac78;
+    }
+    
+    &.def-bar {
+      background-color: #fae078;
+    }
+    
+    &.satk-bar {
+      background-color: #9db7f5;
+    }
+    
+    &.sdef-bar {
+      background-color: #a7db8d;
+    }
+    
+    &.spd-bar {
+      background-color: #fa92b2;
+    }
+  }
+
+  .stat-value {
+    text-align: right;
+    font-weight: 500;
+    color: #333;
+  }
+}

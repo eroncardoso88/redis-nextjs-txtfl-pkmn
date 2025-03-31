@@ -1,3 +1,6 @@
+import PokemonDataCheck from "@/components/pokemon-data-check/pokemon-data-check";
+import { ToastProvider } from "@/components/ui/Toast/toast-context";
+import { QueryProvider } from "@/lib/query-client";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -24,8 +27,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="https://www.pokemoncenter.com/favicon.ico" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <QueryProvider>
+          <ToastProvider>
+            {children}
+            <PokemonDataCheck />
+          </ToastProvider>
+        </QueryProvider>
       </body>
     </html>
   );

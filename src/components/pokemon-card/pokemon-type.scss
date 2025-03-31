@@ -1,0 +1,31 @@
+$white-color: #f6f6f6;
+
+.poketype {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  &__container {
+    background-color: $white-color;
+    padding: 0.25rem;
+    border-radius: 2rem;
+  }
+  &__label {
+    background: linear-gradient(
+      360deg,
+      var(--poke-primary-base) 0%,
+      var(--poke-primary-base) 25%,
+      var(--poke-primary-invisible) 85%
+    );
+    color: $white-color;
+    font-weight: 500;
+    letter-spacing: 0.1ch;
+    border-radius: 1.75rem;
+    width: 100%;
+    padding: 0 1rem;
+    line-height: 1.5rem;
+  }
+}

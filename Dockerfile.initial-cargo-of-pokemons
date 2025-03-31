@@ -1,0 +1,9 @@
+# Dockerfile.initializer
+FROM curlimages/curl:latest
+
+WORKDIR /app
+
+COPY ./scripts/initial-cargo-of-pokemons.sh /app/initial-cargo-of-pokemons.sh
+RUN chmod +x /app/initial-cargo-of-pokemons.sh
+
+CMD ["sh", "-c", "sleep 15 && /app/initial-cargo-of-pokemons.sh"]

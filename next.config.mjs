@@ -2,7 +2,7 @@
 const nextConfig = {
   webpack: (config) => {
     config.infrastructureLogging = {
-      level: 'error',
+      level: 'verbose',
     };
     return config;
   },
