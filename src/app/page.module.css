@@ -21,3 +21,7 @@
     filter: invert();
   }
 }
+
+* {
+  box-sizing: border-box;
+}
